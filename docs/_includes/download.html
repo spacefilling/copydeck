@@ -1,0 +1,6 @@
+{%- assign t = site.data.i18n[page.lang] -%}
+<p class="cta">
+  <a class="button" href="{{ site.download_url }}">{{ t.download }}</a>
+  <a class="button secondary" href="{{ site.repository_url }}">{{ t.github }}</a>
+  <span class="small">v{{ site.version }} · {{ t.free }}</span>
+</p>

@@ -1,0 +1,3 @@
+﻿product_name,net_weight,ingredients,allergens,@photo,#show_badge
+Tomato soup,500 g,"Tomatoes 85%, water, olive oil, salt",None,/images/tomato.jpg,TRUE
+Pea soup,400 g,"Peas 70%, water, CELERY, salt\\Cooked in a facility that also handles MUSTARD.",CELERY,/images/pea.jpg,FALSE

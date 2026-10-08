@@ -1,0 +1,3 @@
+product_name	net_weight	ingredients
+Tomato soup	500 g	Tomatoes 85%, water, olive oil, salt
+Pea soup	400 g	Peas 70%, water, CELERY, salt

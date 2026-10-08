@@ -1,0 +1,36 @@
+en:
+  name: English
+  home: Home
+  manual: Manual
+  download: Download Copydeck.jsx
+  github: Source on GitHub
+  free: Free and open source · GPL-3.0 license
+  faq: Frequently asked questions
+  by: by
+it:
+  name: Italiano
+  home: Home
+  manual: Manuale
+  download: Scarica Copydeck.jsx
+  github: Codice su GitHub
+  free: Gratuito e open source · licenza GPL-3.0
+  faq: Domande frequenti
+  by: di
+fr:
+  name: Français
+  home: Accueil
+  manual: Manuel
+  download: Télécharger Copydeck.jsx
+  github: Code source sur GitHub
+  free: Gratuit et open source · licence GPL-3.0
+  faq: Questions fréquentes
+  by: par
+de:
+  name: Deutsch
+  home: Start
+  manual: Handbuch
+  download: Copydeck.jsx herunterladen
+  github: Quellcode auf GitHub
+  free: Kostenlos und Open Source · GPL-3.0-Lizenz
+  faq: Häufige Fragen
+  by: von

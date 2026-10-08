@@ -1,0 +1,6 @@
+* text=auto
+*.txt text eol=crlf
+*.csv text eol=crlf
+*.jsx text eol=lf
+*.md text eol=lf
+*.xml text eol=lf

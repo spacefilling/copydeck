@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{%- assign lang = page.lang | default: site.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- assign home = site.pages | where: "ref", "home" | where: "lang", lang | first -%}
+{%- assign manual = site.pages | where: "ref", "manual" | where: "lang", lang | first -%}
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {%- if page.ref %}
+  {%- assign alternates = site.pages | where: "ref", page.ref %}
+  {%- for p in alternates %}
+  <link rel="alternate" hreflang="{{ p.lang }}" href="{{ p.url | absolute_url }}">
+  {%- if p.lang == "en" %}
+  <link rel="alternate" hreflang="x-default" href="{{ p.url | absolute_url }}">
+  {%- endif %}
+  {%- endfor %}
+  {%- endif %}
+  <link rel="icon" type="image/png" href="{{ '/assets/logo.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  {%- if page.ref == "home" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Copydeck",
+    "description": {{ page.description | jsonify }},
+    "url": {{ page.url | absolute_url | jsonify }},
+    "downloadUrl": {{ site.download_url | jsonify }},
+    "softwareVersion": {{ site.version | jsonify }},
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Windows, macOS",
+    "softwareRequirements": "Adobe Illustrator",
+    "inLanguage": ["en", "it", "fr", "de"],
+    "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "author": { "@type": "Person", "name": {{ site.author | jsonify }} },
+    "codeRepository": {{ site.repository_url | jsonify }},
+    "image": {{ '/assets/social-preview.png' | absolute_url | jsonify }}
+  }
+  </script>
+  {%- endif %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ home.url | relative_url }}"><img src="{{ '/assets/logo.png' | relative_url }}" alt="" width="28" height="28"> Copydeck <span class="ver">v{{ site.version }}</span></a>
+      <nav aria-label="Main">
+        <a href="{{ home.url | relative_url }}">{{ t.home }}</a>
+        <a href="{{ manual.url | relative_url }}">{{ t.manual }}</a>
+        <a href="{{ site.repository_url }}">GitHub</a>
+      </nav>
+      <nav class="langs" aria-label="Language">
+        {%- if page.ref %}
+        {%- assign alternates = site.pages | where: "ref", page.ref | sort: "order" %}
+        {%- for p in alternates %}
+        <a href="{{ p.url | relative_url }}" hreflang="{{ p.lang }}" lang="{{ p.lang }}"{% if p.lang == lang %} aria-current="page"{% endif %}>{{ p.lang | upcase }}</a>
+        {%- endfor %}
+        {%- endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="wrap content">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Copydeck {{ site.version }} {{ t.by }} {{ site.author }} · {{ t.free }} · <a href="{{ site.repository_url }}">{{ t.github }}</a></p>
+      <p class="small">Adobe and Illustrator are trademarks of Adobe Inc. Copydeck is an independent project, not affiliated with Adobe.</p>
+    </div>
+  </footer>
+</body>
+</html>

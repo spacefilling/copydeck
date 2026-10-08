@@ -1,0 +1,20 @@
+{%- assign t = site.data.i18n[page.lang] -%}
+<section class="faq">
+  <h2 id="faq">{{ t.faq }}</h2>
+  {%- for f in page.faq %}
+  <h3>{{ f.q }}</h3>
+  {{ f.a | markdownify }}
+  {%- endfor %}
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": {{ page.lang | jsonify }},
+  "mainEntity": [
+    {%- for f in page.faq %}
+    { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | markdownify | strip_html | strip | jsonify }} } }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>

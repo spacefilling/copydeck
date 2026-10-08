@@ -1,0 +1,30 @@
+title: Copydeck
+description: >-
+  Free Adobe Illustrator script that keeps your artwork in sync with its copy
+  deck: compare and update text variables from XML, CSV or TXT without losing
+  formatting.
+url: https://spacefilling.github.io
+baseurl: /copydeck
+lang: en
+author: spacefiller
+logo: /assets/logo.png
+image: /assets/social-preview.png
+version: "1.0"
+repository_url: https://github.com/spacefilling/copydeck
+download_url: https://github.com/spacefilling/copydeck/releases/latest/download/Copydeck.jsx
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/social-preview.png
