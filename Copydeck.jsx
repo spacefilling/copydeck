@@ -15,12 +15,12 @@
   - Binds and unbinds variables, also several objects per variable.
   - Replaces only the words that change, so the formatting of the rest of
     the text (and, optionally, manual spaces and line breaks) is kept.
-  - User interface in English, Italian, French and German.
+  - User interface in English, Italian, French, German and Spanish.
 
   Usage: File > Scripts > Other Script... and choose this file, or copy it
   into Illustrator's Scripts folder.
 
-  Version 1.0.0 · by spacefiller
+  Version 1.1.0 · by spacefiller
 
   Copyright (C) 2026 spacefiller
 
@@ -43,10 +43,11 @@
 
 (function () {
 
-var VERSION = "1.0.0";
+var VERSION = "1.1.0";
 var HOMEPAGE = "github.com/spacefilling/copydeck";
 var MANUAL_URL = { en: "https://spacefilling.github.io/copydeck/manual/", it: "https://spacefilling.github.io/copydeck/it/manuale/",
-                   fr: "https://spacefilling.github.io/copydeck/fr/manuel/", de: "https://spacefilling.github.io/copydeck/de/handbuch/" };
+                   fr: "https://spacefilling.github.io/copydeck/fr/manuel/", de: "https://spacefilling.github.io/copydeck/de/handbuch/",
+                   es: "https://spacefilling.github.io/copydeck/es/manual/" };
 var PREF = "Copydeck_";
 var LEGACY_PREF = null;   // preference prefix of an earlier private version, if any
 var XMP_NS = "https://github.com/spacefilling/copydeck/ns/1.0/";
@@ -56,8 +57,8 @@ var XMP_PROP = "state";
 // [{ ns: "http://example.com/ns/1.0/", prefix: "old", prop: "state" }]
 var LEGACY_XMP = [];
 var TAG = "VAR:";
-var LANGS = ["en", "it", "fr", "de"];
-var LANG_NAMES = { en: "English", it: "Italiano", fr: "Français", de: "Deutsch" };
+var LANGS = ["en", "it", "fr", "de", "es"];
+var LANG_NAMES = { en: "English", it: "Italiano", fr: "Français", de: "Deutsch", es: "Español" };
 
 // ============================== LANGUAGE ==============================
 
@@ -1118,7 +1119,7 @@ function buildUI() {
     var bHelp = gFile.add("button", undefined, L("How it works"));
     var ddLang = gFile.add("dropdownlist", undefined, (function () { var a = []; for (var x = 0; x < LANGS.length; x++) a.push(LANG_NAMES[LANGS[x]]); return a; })());
     for (i = 0; i < LANGS.length; i++) if (LANGS[i] === LANG) ddLang.selection = i;
-    ddLang.helpTip = "Language / Lingua / Langue / Sprache";
+    ddLang.helpTip = "Language / Lingua / Langue / Sprache / Idioma";
 
     var gFile2 = pSrc.add("group");
     gFile2.alignChildren = ["left", "center"];
@@ -2959,6 +2960,259 @@ I18N.de = {
     "✓ Up to date": "✓ Aktuell",
     "✓ Bound": "✓ Verknüpft",
     "– Other type": "– Anderer Typ"
+};
+
+I18N.es = {
+    "@help": "CÓMO FUNCIONA\n\n" +
+        "1. ARCHIVO DE DATOS — Elige el archivo de variables: XML (biblioteca de variables de Illustrator), CSV o TXT delimitado por tabulaciones (primera fila = nombres de las variables, cada fila siguiente = un registro; @ = imagen, # = visibilidad, % = gráfico). El vínculo se guarda dentro del archivo .ai: la próxima vez el archivo se carga solo. Si el archivo contiene varios registros, elige cuál usar.\n\n" +
+        "2. COMPARACIÓN — Cada fila es una variable. Solo se compara el texto: negrita, cursiva, subrayado y cualquier otro formato no cuentan.\n" +
+        "   ● Por actualizar: el texto es distinto del archivo\n" +
+        "   ≈ Solo espacios/saltos de línea, ≈ Solo mayúsculas: diferencias ignoradas (opciones «Ignorar espacios y saltos de línea» / «Ignorar mayúsculas»)\n" +
+        "   ○ No vinculada: la variable existe pero ningún objeto la usa\n" +
+        "   + Nueva en el archivo: solo está en el archivo de datos (créala y vincúlala)\n" +
+        "   ! No está en el archivo: está en el documento pero no en el archivo de datos\n" +
+        "   ✓ Actualizada: coincide con el archivo\n\n" +
+        "3. ACTUALIZAR — Una a una, las seleccionadas o todas las que haya que actualizar. Solo cambian las palabras distintas: el formato, los espacios y los saltos de línea del resto se mantienen. «Deshacer última actualización» restaura los textos anteriores.\n\n" +
+        "4. VINCULAR — «Emparejar automáticamente…» propone vincular los objetos que ya contienen el valor de una variable (revisa la lista antes de confirmar). A mano: «Elegir en la mesa de trabajo…», o selecciona los objetos antes de ejecutar el script, o elige objeto y variable en la pestaña «Objetos de texto».\n\n" +
+        "5. COPIAR EL ARTE — Con la opción «Guardar en las notas» cada objeto vinculado tiene la línea «VAR:nombre» en sus notas (panel Atributos), que viaja con el objeto. El script la añade automáticamente cada vez que se abre, también a los vínculos creados en el panel Variables. Después de pegar en otro archivo, abre el script y usa «Emparejar automáticamente…» para restaurar los vínculos.\n\n" +
+        "Los cambios se aplican al documento mientras trabajas: recuerda guardar el archivo .ai.",
+    "Full manual:": "Manual completo:",
+    "Cannot save the link information in the document:": "No se puede guardar la información del vínculo en el documento:",
+    "Record {0}": "Registro {0}",
+    "The file contains no variables (<variable varName=\"…\">).\nIs it an Illustrator Variable Library file?": "El archivo no contiene variables (<variable varName=\"…\">).\n¿Es una biblioteca de variables de Illustrator?",
+    "The file contains no records with values (<sampleDataSet>).": "El archivo no contiene registros con valores (<sampleDataSet>).",
+    "Cannot open the file:": "No se puede abrir el archivo:",
+    "The file is empty.": "El archivo está vacío.",
+    "The first row of the file must contain the variable names.": "La primera fila del archivo debe contener los nombres de las variables.",
+    "The file only contains the row of names: the rows with the values are missing.": "El archivo solo contiene la fila de nombres: faltan las filas con los valores.",
+    "Row {0}": "Fila {0}",
+    "Error reading {0}:": "Error al leer {0}:",
+    "({0} script)": "({0} script)",
+    "Linked data file": "Archivo de datos vinculado",
+    "Choose data file…": "Elegir archivo de datos…",
+    "Reload": "Recargar",
+    "How it works": "Cómo funciona",
+    "Record:": "Registro:",
+    "Variables and comparison": "Variables y comparación",
+    "Text objects": "Objetos de texto",
+    "Show:": "Mostrar:",
+    "All": "Todos",
+    "To update": "Por actualizar",
+    "Not bound": "No vinculadas",
+    "New in file": "Nuevas en el archivo",
+    "Not in file": "No están en el archivo",
+    "Ignored differences": "Diferencias ignoradas",
+    "Up to date": "Actualizadas",
+    "Search:": "Buscar:",
+    "Ignore spaces and line breaks": "Ignorar espacios y saltos de línea",
+    "Variables that differ only in spaces or line breaks are not marked as to update. When updating, the document's spaces and line breaks stay where they are. Bold, italic and other formatting never count in the comparison.": "Las variables que solo difieren en espacios o saltos de línea no se marcan por actualizar. Al actualizar, los espacios y saltos de línea del documento se quedan donde están. La negrita, la cursiva y cualquier otro formato nunca cuentan en la comparación.",
+    "Ignore case": "Ignorar mayúsculas",
+    "Variables that differ only in upper/lower case are not marked as to update.": "Las variables que solo difieren en mayúsculas/minúsculas no se marcan por actualizar.",
+    "Status": "Estado",
+    "Variable": "Variable",
+    "Objects": "Objetos",
+    "Text in the document": "Texto en el documento",
+    "Last updated from": "Última actualización desde",
+    "Update all variables to update": "Actualizar todas las variables pendientes",
+    "Update selected rows": "Actualizar las filas seleccionadas",
+    "Undo last update": "Deshacer última actualización",
+    "Auto-match…": "Emparejar automáticamente…",
+    "Binds the variables to the text objects that already contain their value, and restores the bindings saved in the Notes (e.g. after copying the artwork).": "Vincula las variables a los objetos de texto que ya contienen su valor y restaura los vínculos guardados en las notas (p. ej. después de copiar el arte).",
+    "Ctrl/Cmd+click or Shift+click to select several rows.": "Ctrl/Cmd+clic o Mayús+clic para seleccionar varias filas.",
+    "Details": "Detalles",
+    "Select a variable in the list.": "Selecciona una variable en la lista.",
+    "Now in the document": "Ahora en el documento",
+    "In the file": "En el archivo",
+    "Update this one": "Actualizar esta",
+    "Show in document": "Mostrar en el documento",
+    "Bind to selected objects": "Vincular a los objetos seleccionados",
+    "Pick on artboard…": "Elegir en la mesa de trabajo…",
+    "Bind from list…": "Vincular desde la lista…",
+    "Unbind": "Desvincular",
+    "Create variable": "Crear variable",
+    "Delete variable": "Eliminar variable",
+    "1 · Choose the text object": "1 · Elige el objeto de texto",
+    "Searches the text, layer, name or bound variable. Several words = all of them must be present.": "Busca en el texto, la capa, el nombre o la variable vinculada. Varias palabras = deben aparecer todas.",
+    "Without variable": "Sin variable",
+    "With variable": "Con variable",
+    "Selected before opening": "Seleccionados antes de abrir",
+    "Bound variable": "Variable vinculada",
+    "Link": "Vínculo",
+    "Layer": "Capa",
+    "Artb.": "Mesa",
+    "Text": "Texto",
+    "2 · Choose the variable": "2 · Elige la variable",
+    "Searches the variable name and its value in the file.": "Busca en el nombre de la variable y en su valor en el archivo.",
+    "Obj.": "Obj.",
+    "3 · Bind": "3 · Vincula",
+    "Bind object and variable": "Vincular objeto y variable",
+    "Pick the object on the artboard…": "Elegir el objeto en la mesa de trabajo…",
+    "New variable from this text…": "Nueva variable a partir de este texto…",
+    "★ = object text equal to the variable's value in the file. Double-click an object to see it.": "★ = texto del objeto igual al valor de la variable en el archivo. Doble clic en un objeto para verlo.",
+    "Options": "Opciones",
+    "Also bind in the Variables panel": "Vincular también en el panel Variables",
+    "Also uses Illustrator's binding (visible in the Variables panel). If disabled, bindings belong to the script only, in the objects' Notes.": "Usa también el vínculo de Illustrator (visible en el panel Variables). Si se desactiva, los vínculos son solo del script, en las notas de los objetos.",
+    "Remember in Notes (for copying)": "Guardar en las notas (para copiar)",
+    "Writes «VAR:name» in the object's Note: the binding survives when you copy the object or paste it into another file.": "Escribe «VAR:nombre» en las notas del objeto: el vínculo se mantiene al copiar el objeto o pegarlo en otro archivo.",
+    "Close": "Cerrar",
+    "File modified on {0}": "Archivo modificado el {0}",
+    "linked to this document on {0}": "vinculado a este documento el {0}",
+    "Linked file not found: {0}": "Archivo vinculado no encontrado: {0}",
+    "Press «Choose data file…» to show where it is now.": "Pulsa «Elegir archivo de datos…» para indicar dónde está ahora.",
+    "No file linked.": "Ningún archivo vinculado.",
+    "Press «Choose data file…» (XML, CSV or TXT) to load the variables file and compare it with the document.": "Pulsa «Elegir archivo de datos…» (XML, CSV o TXT) para cargar el archivo de variables y compararlo con el documento.",
+    "{0} to update": "{0} por actualizar",
+    "none to update": "ninguna por actualizar",
+    "{0} up to date": "{0} actualizadas",
+    "{0} with ignored differences": "{0} con diferencias ignoradas",
+    "{0} not bound": "{0} no vinculadas",
+    "{0} new in file": "{0} nuevas en el archivo",
+    "{0} not in file": "{0} no están en el archivo",
+    "{0} of {1} rows": "{0} de {1} filas",
+    "Use «Update selected rows» to update them together.": "Usa «Actualizar las filas seleccionadas» para actualizarlas juntas.",
+    "(no object bound)": "(ningún objeto vinculado)",
+    "(no file loaded)": "(ningún archivo cargado)",
+    "(this variable is not in the file)": "(esta variable no está en el archivo)",
+    "Will change:": "Cambiará:",
+    "Warning: the bound objects do not all have the same text.": "Atención: los objetos vinculados no tienen todos el mismo texto.",
+    "Only upper/lower case changes: it does not count as to update. «Make identical to file» aligns it with the file anyway.": "Solo cambian mayúsculas/minúsculas: no cuenta como por actualizar. «Igualar al archivo» la alinea de todos modos con el archivo.",
+    "Only spaces or line breaks change: it does not count as to update. «Make identical to file» aligns it with the file anyway.": "Solo cambian espacios o saltos de línea: no cuenta como por actualizar. «Igualar al archivo» la alinea de todos modos con el archivo.",
+    "The text in the document matches the file.": "El texto del documento coincide con el archivo.",
+    "No object uses this variable: bind it to a text object.": "Ningún objeto usa esta variable: vincúlala a un objeto de texto.",
+    "The variable is in the file but not in the document: create the variable and bind it to an object.": "La variable está en el archivo pero no en el documento: crea la variable y vincúlala a un objeto.",
+    "The variable is in the document but not in the loaded file.": "La variable está en el documento pero no en el archivo cargado.",
+    "Non-text variable (visibility, image or graph): manage it from Illustrator's Variables panel.": "Variable no textual (visibilidad, imagen o gráfico): gestiónala desde el panel Variables de Illustrator.",
+    "artboard {0}": "mesa de trabajo {0}",
+    "Last update: {0} from file {1}": "Última actualización: {0} desde el archivo {1}",
+    "(record «{0}»)": "(registro «{0}»)",
+    "Never updated with this script.": "Nunca actualizada con este script.",
+    "Make identical to file": "Igualar al archivo",
+    "No variable chosen.": "Ninguna variable elegida.",
+    "In the file:": "En el archivo:",
+    "(empty)": "(vacío)",
+    "Not bound yet.": "Todavía no vinculada.",
+    "Showing the first {0} of {1}: type in the search box to narrow down": "Se muestran los primeros {0} de {1}: escribe en la búsqueda para acotar",
+    "{0} of {1} objects": "{0} de {1} objetos",
+    "{0} ★ suggested": "{0} ★ sugeridos",
+    "Variable: {0}": "Variable: {0}",
+    "(Illustrator binding)": "(vínculo de Illustrator)",
+    "(script binding)": "(vínculo del script)",
+    "No variable bound": "Ninguna variable vinculada",
+    "Layer «{0}»": "Capa «{0}»",
+    "Artboard {0}": "Mesa de trabajo {0}",
+    "Name «{0}»": "Nombre «{0}»",
+    "binding saved in the object's Note": "vínculo guardado en las notas del objeto",
+    "same value as: {0}": "mismo valor que: {0}",
+    "very short value: check it": "valor muy corto: revísalo",
+    "the object matches several variables": "el objeto coincide con varias variables",
+    "Restore": "Restaurar",
+    "Bind": "Vincular",
+    "Extra copy": "Copia adicional",
+    "Nothing to match.": "Nada que emparejar.",
+    "There are no free text objects whose text matches the value of a variable.": "No hay objetos de texto libres cuyo texto coincida con el valor de una variable.",
+    "There are no free text objects whose text matches the value of a variable (no data file loaded).": "No hay objetos de texto libres cuyo texto coincida con el valor de una variable (ningún archivo de datos cargado).",
+    "Auto-match": "Emparejar automáticamente",
+    "Unbound text objects whose text matches the value of a variable. Only the safe matches are preselected: check the list (double-click = show the object), add or remove rows with Ctrl/Cmd+click and press «Bind selected».": "Objetos de texto no vinculados cuyo texto coincide con el valor de una variable. Solo están preseleccionadas las coincidencias seguras: revisa la lista (doble clic = mostrar el objeto), añade o quita filas con Ctrl/Cmd+clic y pulsa «Vincular selección».",
+    "Action": "Acción",
+    "Layer · artboard": "Capa · mesa",
+    "Object text": "Texto del objeto",
+    "Note": "Nota",
+    "artb. {0}": "mesa {0}",
+    "Select all": "Seleccionar todo",
+    "None": "Ninguna",
+    "Also save the existing bindings in the objects' Notes ({0} objects), so they survive when you copy the artwork": "Guardar también los vínculos existentes en las notas de los objetos ({0} objetos), para que se mantengan al copiar el arte",
+    "Cancel": "Cancelar",
+    "Bind selected": "Vincular selección",
+    "{0} of {1} rows selected": "{0} de {1} filas seleccionadas",
+    "Error while matching:": "Error al emparejar:",
+    "No changes.": "Sin cambios.",
+    "Choose the variables file (XML, CSV or TXT)": "Elige el archivo de variables (XML, CSV o TXT)",
+    "Data files": "Archivos de datos",
+    "All files": "Todos los archivos",
+    "Loaded {0}. Check the rows «To update».": "{0} cargado. Revisa las filas «Por actualizar».",
+    "The file no longer exists:": "El archivo ya no existe:",
+    "File reloaded.": "Archivo recargado.",
+    "Bold/italic style not found for {0} parts.": "No se encontró el estilo negrita/cursiva para {0} fragmentos.",
+    "Some objects were not updated:": "Algunos objetos no se actualizaron:",
+    "Undone: {0}.": "Deshecho: {0}.",
+    "Some objects are already bound to another variable ({0}).\nReplace the binding with «{1}»?": "Algunos objetos ya están vinculados a otra variable ({0}).\n¿Sustituir el vínculo por «{1}»?",
+    "Error while binding:": "Error al vincular:",
+    "({0} through the script, because the variable was already bound to another object)": "({0} mediante el script, porque la variable ya estaba vinculada a otro objeto)",
+    "Binding removed.": "Vínculo eliminado.",
+    "The window closes and Illustrator is free again.\n\n1. Select on the artboard the text object to bind to «{0}».\n2. Run the script again (best with a keyboard shortcut).\n\nThe binding is completed automatically and the window reopens here.\n\nContinue?": "La ventana se cierra e Illustrator queda libre.\n\n1. Selecciona en la mesa de trabajo el objeto de texto que quieres vincular a «{0}».\n2. Vuelve a ejecutar el script (mejor con un atajo de teclado).\n\nEl vínculo se completa automáticamente y la ventana se vuelve a abrir aquí.\n\n¿Continuar?",
+    "Record selected: {0}": "Registro seleccionado: {0}",
+    "update of «{0}»": "actualización de «{0}»",
+    "Update {0} variables ({1} objects) with the values of\n{2} — record «{3}»?": "¿Actualizar {0} variables ({1} objetos) con los valores de\n{2} — registro «{3}»?",
+    "update of all variables": "actualización de todas las variables",
+    "Showing object {0} of {1} for «{2}».": "Objeto {0} de {1} mostrado para «{2}».",
+    "Choose the text object for «{0}» (★ = text equal to the value in the file) and press «Bind object and variable».": "Elige el objeto de texto para «{0}» (★ = texto igual al valor del archivo) y pulsa «Vincular objeto y variable».",
+    "Unbind «{0}» from all {1} objects?": "¿Desvincular «{0}» de los {1} objetos?",
+    "Error while creating the variable:": "Error al crear la variable:",
+    "Now bind it to a text object.": "Ahora vincúlala a un objeto de texto.",
+    "Delete the variable «{0}» from the document?\nThe bound objects stay, with their current text, but will no longer be bound.": "¿Eliminar la variable «{0}» del documento?\nLos objetos vinculados se mantienen, con su texto actual, pero dejarán de estar vinculados.",
+    "Error:": "Error:",
+    "Variable «{0}» deleted.": "Variable «{0}» eliminada.",
+    "Name of the new variable (letters, digits, _ . -, no spaces):": "Nombre de la nueva variable (letras, números, _ . -, sin espacios):",
+    "new_variable": "nueva_variable",
+    "Invalid name: «{0}».\nUse letters, digits, _ . - and start with a letter.": "Nombre no válido: «{0}».\nUsa letras, números, _ . - y empieza por una letra.",
+    "The variable «{0}» already exists. Bind the object to it?": "La variable «{0}» ya existe. ¿Vincular el objeto a ella?",
+    "Differences in spaces/line breaks only no longer count as to update.": "Las diferencias solo de espacios/saltos de línea ya no cuentan como por actualizar.",
+    "Differences in spaces/line breaks now count as to update.": "Las diferencias de espacios/saltos de línea ahora cuentan como por actualizar.",
+    "Differences in case only no longer count as to update.": "Las diferencias solo de mayúsculas ya no cuentan como por actualizar.",
+    "Differences in case now count as to update.": "Las diferencias de mayúsculas ahora cuentan como por actualizar.",
+    "Warning: cannot read/write the document metadata, the link to the file will not be remembered.": "Atención: no se pueden leer/escribir los metadatos del documento, el vínculo con el archivo no se recordará.",
+    "Double-click a row to see the object in the document.": "Doble clic en una fila para ver el objeto en el documento.",
+    "No text object selected: «{0}» was not bound. Try again with «Pick on artboard…».": "Ningún objeto de texto seleccionado: «{0}» no se ha vinculado. Inténtalo de nuevo con «Elegir en la mesa de trabajo…».",
+    "{0} text objects are selected.\nBind them all to «{1}»?": "Hay {0} objetos de texto seleccionados.\n¿Vincularlos todos a «{1}»?",
+    "Binding of «{0}» cancelled.": "Vínculo de «{0}» cancelado.",
+    "Open the Illustrator document with the variables first.": "Abre primero el documento de Illustrator con las variables.",
+    "Unexpected error: {0}": "Error inesperado: {0}",
+    "(line {0})": "(línea {0})",
+    "{0} object": "{0} objeto",
+    "{0} objects": "{0} objetos",
+    "{0} variable": "{0} variable",
+    "{0} variables": "{0} variables",
+    "{0} variable selected": "{0} variable seleccionada",
+    "{0} variables selected": "{0} variables seleccionadas",
+    "Bound to {0} object:": "Vinculada a {0} objeto:",
+    "Bound to {0} objects:": "Vinculada a {0} objetos:",
+    "Already bound to {0} object.": "Ya vinculada a {0} objeto.",
+    "Already bound to {0} objects.": "Ya vinculada a {0} objetos.",
+    "{0} object selected": "{0} objeto seleccionado",
+    "{0} objects selected": "{0} objetos seleccionados",
+    "already bound to {0} object: this would be an extra copy": "ya vinculada a {0} objeto: sería una copia adicional",
+    "already bound to {0} objects: this would be an extra copy": "ya vinculada a {0} objetos: sería una copia adicional",
+    "{0} object bound": "{0} objeto vinculado",
+    "{0} objects bound": "{0} objetos vinculados",
+    "{0} binding restored": "{0} vínculo restaurado",
+    "{0} bindings restored": "{0} vínculos restaurados",
+    "{0} binding saved in the Notes": "{0} vínculo guardado en las notas",
+    "{0} bindings saved in the Notes": "{0} vínculos guardados en las notas",
+    "{0} variable updated": "{0} variable actualizada",
+    "{0} variables updated": "{0} variables actualizadas",
+    "In {0} object the whole text was replaced.": "En {0} objeto se sustituyó todo el texto.",
+    "In {0} objects the whole text was replaced.": "En {0} objetos se sustituyó todo el texto.",
+    "«{1}» bound to {0} object": "«{1}» vinculada a {0} objeto",
+    "«{1}» bound to {0} objects": "«{1}» vinculada a {0} objetos",
+    "Could not unbind {0} object.": "No se pudo desvincular {0} objeto.",
+    "Could not unbind {0} objects.": "No se pudieron desvincular {0} objetos.",
+    "update of {0} variable": "actualización de {0} variable",
+    "update of {0} variables": "actualización de {0} variables",
+    "{0} variable created.": "{0} variable creada.",
+    "{0} variables created.": "{0} variables creadas.",
+    "{0} binding saved in the objects' Notes (so it can be copied).": "{0} vínculo guardado en las notas de los objetos (para poder copiarlo).",
+    "{0} bindings saved in the objects' Notes (so they can be copied).": "{0} vínculos guardados en las notas de los objetos (para poder copiarlos).",
+    "{0} text object selected at launch.": "{0} objeto de texto seleccionado al abrir.",
+    "{0} text objects selected at launch.": "{0} objetos de texto seleccionados al abrir.",
+    "● To update": "● Por actualizar",
+    "≈ Spaces/line breaks only": "≈ Solo espacios/saltos de línea",
+    "≈ Case only": "≈ Solo mayúsculas",
+    "○ Not bound": "○ No vinculada",
+    "+ New in file": "+ Nueva en el archivo",
+    "! Not in file": "! No está en el archivo",
+    "✓ Up to date": "✓ Actualizada",
+    "✓ Bound": "✓ Vinculada",
+    "– Other type": "– Otro tipo"
 };
 
 try {

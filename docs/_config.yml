@@ -9,7 +9,7 @@ lang: en
 author: spacefiller
 logo: /assets/logo.png
 image: /assets/social-preview.png
-version: "1.0"
+version: "1.1"
 repository_url: https://github.com/spacefilling/copydeck
 download_url: https://github.com/spacefilling/copydeck/releases/latest/download/Copydeck.jsx
 

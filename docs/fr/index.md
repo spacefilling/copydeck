@@ -48,7 +48,7 @@ Le panneau Variables et la fusion de données d'Illustrator importent les donné
 - **Association automatique** : propose de lier les objets dont le texte correspond déjà à la valeur d'une variable ; les cas douteux sont listés mais pas présélectionnés.
 - **Une variable sur plusieurs objets**, et des liens conservés même après copier-coller dans un autre document.
 - **XML, CSV et TXT** dans les formats utilisés par Illustrator et par VariableImporter.
-- **Interface en français, anglais, italien et allemand.**
+- **Interface en français, anglais, italien, allemand et espagnol.**
 
 ## Pour qui ?
 

@@ -3,11 +3,11 @@
 [![Version](https://img.shields.io/github/v/release/spacefilling/copydeck?label=version)](https://github.com/spacefilling/copydeck/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 ![Adobe Illustrator](https://img.shields.io/badge/Adobe%20Illustrator-script-orange)
-![Languages](https://img.shields.io/badge/UI-EN%20%7C%20IT%20%7C%20FR%20%7C%20DE-lightgrey)
+![Languages](https://img.shields.io/badge/UI-EN%20%7C%20IT%20%7C%20FR%20%7C%20DE%20%7C%20ES-lightgrey)
 
 **Keep your Illustrator artwork in sync with its copy deck.** Copydeck is a free, open source (GPL-3.0) script for Adobe Illustrator that compares the text variables of an `.ai` file with a data file (Illustrator Variable Library XML, CSV or tab-delimited TXT), shows exactly what changed and updates the texts one by one or all together, **without losing formatting**.
 
-**Website and manual:** [spacefilling.github.io/copydeck](https://spacefilling.github.io/copydeck/) · [Italiano](https://spacefilling.github.io/copydeck/it/) · [Français](https://spacefilling.github.io/copydeck/fr/) · [Deutsch](https://spacefilling.github.io/copydeck/de/)
+**Website and manual:** [spacefilling.github.io/copydeck](https://spacefilling.github.io/copydeck/) · [Italiano](https://spacefilling.github.io/copydeck/it/) · [Français](https://spacefilling.github.io/copydeck/fr/) · [Deutsch](https://spacefilling.github.io/copydeck/de/) · [Español](https://spacefilling.github.io/copydeck/es/)
 
 **Download:** [Copydeck.jsx (latest release)](https://github.com/spacefilling/copydeck/releases/latest/download/Copydeck.jsx)
 
@@ -30,7 +30,7 @@ Copydeck keeps Illustrator's own variables and adds a clear, safe workflow on to
 - **Auto-match** – proposes bindings for objects whose text already equals a variable's value; doubtful cases are listed but not preselected.
 - **One variable on several objects** – extra objects are bound through a `VAR:name` line in the object's Note, which also travels with the object when you copy the artwork to another document.
 - **XML, CSV and TXT** – Illustrator Variable Library XML (`<p>`, `<br/>`, `<b>`, `<i>`) and CSV/TXT in the format of Illustrator data merge and VariableImporter (`@` image, `#` visibility, `%` graph columns). Delimiter and encoding (UTF-8, UTF-16, Windows-1252) are detected automatically.
-- **Interface in English, Italian, French and German.**
+- **Interface in English, Italian, French, German and Spanish.**
 
 ## Installation
 
@@ -77,6 +77,7 @@ Sample files: [`examples/`](examples/).
 | Italiano | [Copydeck](https://spacefilling.github.io/copydeck/it/) | [Manuale](https://spacefilling.github.io/copydeck/it/manuale/) |
 | Français | [Copydeck](https://spacefilling.github.io/copydeck/fr/) | [Manuel](https://spacefilling.github.io/copydeck/fr/manuel/) |
 | Deutsch | [Copydeck](https://spacefilling.github.io/copydeck/de/) | [Handbuch](https://spacefilling.github.io/copydeck/de/handbuch/) |
+| Español | [Copydeck](https://spacefilling.github.io/copydeck/es/) | [Manual](https://spacefilling.github.io/copydeck/es/manual/) |
 
 Inside the script, **How it works** gives a short guide in the selected language.
 

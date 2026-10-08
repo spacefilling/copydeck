@@ -9,7 +9,7 @@ permalink: /fr/manuel/
 
 # Manuel de Copydeck
 
-Copydeck lie un fichier `.ai` au fichier de données des variables (XML, CSV ou TXT), montre ce qui a changé et met à jour les textes. L'interface est disponible en français, anglais, italien et allemand : utilisez le menu en haut à droite de la fenêtre.
+Copydeck lie un fichier `.ai` au fichier de données des variables (XML, CSV ou TXT), montre ce qui a changé et met à jour les textes. L'interface est disponible en français, anglais, italien, allemand et espagnol : utilisez le menu en haut à droite de la fenêtre.
 
 
 ## 1. Installation

@@ -48,7 +48,7 @@ Illustrator's own Variables panel and data merge can import the data, but they d
 - **Auto-match**: proposes bindings for the objects whose text already equals a variable's value, with doubtful cases listed but not preselected.
 - **One variable, several objects**, and bindings that survive copy and paste into another document.
 - **XML, CSV and TXT** in the formats used by Illustrator and by VariableImporter.
-- **Interface in English, Italian, French and German.**
+- **Interface in English, Italian, French, German and Spanish.**
 
 ## Who is it for?
 

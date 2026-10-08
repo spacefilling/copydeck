@@ -48,7 +48,7 @@ Il pannello Variabili e l'unione dati di Illustrator importano i dati, ma non mo
 - **Accoppiamento automatico**: propone di collegare gli oggetti il cui testo coincide già con il valore di una variabile; i casi dubbi sono elencati ma non preselezionati.
 - **Una variabile su più oggetti**, e collegamenti che restano anche copiando e incollando in un altro documento.
 - **XML, CSV e TXT** nei formati usati da Illustrator e da VariableImporter.
-- **Interfaccia in italiano, inglese, francese e tedesco.**
+- **Interfaccia in italiano, inglese, francese, tedesco e spagnolo.**
 
 ## Per chi è?
 

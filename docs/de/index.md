@@ -48,7 +48,7 @@ Das Variablen-Bedienfeld und die Datenzusammenführung von Illustrator importier
 - **Automatisch zuordnen**: schlägt Verknüpfungen für Objekte vor, deren Text bereits dem Wert einer Variable entspricht; zweifelhafte Fälle werden aufgelistet, aber nicht vorausgewählt.
 - **Eine Variable auf mehreren Objekten**, und Verknüpfungen, die auch beim Kopieren in ein anderes Dokument erhalten bleiben.
 - **XML, CSV und TXT** in den Formaten von Illustrator und VariableImporter.
-- **Oberfläche auf Deutsch, Englisch, Italienisch und Französisch.**
+- **Oberfläche auf Deutsch, Englisch, Italienisch, Französisch und Spanisch.**
 
 ## Für wen?
 

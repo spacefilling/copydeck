@@ -9,7 +9,7 @@ permalink: /de/handbuch/
 
 # Copydeck-Handbuch
 
-Copydeck verknüpft eine `.ai`-Datei mit der Datendatei der Variablen (XML, CSV oder TXT), zeigt, was sich geändert hat, und aktualisiert die Texte. Die Oberfläche gibt es auf Deutsch, Englisch, Italienisch und Französisch: über das Menü oben rechts im Fenster.
+Copydeck verknüpft eine `.ai`-Datei mit der Datendatei der Variablen (XML, CSV oder TXT), zeigt, was sich geändert hat, und aktualisiert die Texte. Die Oberfläche gibt es auf Deutsch, Englisch, Italienisch, Französisch und Spanisch: über das Menü oben rechts im Fenster.
 
 
 ## 1. Installation

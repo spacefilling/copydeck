@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 – 2026-10-08
+
+- Spanish interface, in-script guide and documentation (overview and manual).
+- The language menu now offers English, Italiano, Français, Deutsch and Español.
+
 ## 1.0.0 – 2026-10-08
 
 First public release.
